@@ -40,7 +40,8 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'reports',
+    'apps.add_report',
+    'apps.home',
 ]
 
 THIRD_PARTY_APPS = [
