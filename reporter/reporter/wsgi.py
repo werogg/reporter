@@ -1,5 +1,5 @@
 """
-WSGI config for reports project.
+WSGI config for add_report project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
