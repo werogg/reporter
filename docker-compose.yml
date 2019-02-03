@@ -1,0 +1,27 @@
+---
+version: '2'
+services:
+
+  postgres:
+    image: 'reporter/postgres'
+    build: docker/db
+    env_file: './envs/dev.env'
+    volumes:
+      - /srv/docker/reporter/postgresql/data/:/var/lib/postgresql/data/
+      - /srv/docker/reporter/postgresql/log/:/var/lib/postgresql/log/
+    ports:
+      - '5432:5432'
+
+  backend:
+    image: 'reporter/backend'
+    build: .
+    env_file: './envs/dev.env'
+    command: ["/bin/sh", "/exec/bootstrap.sh"]
+    volumes:
+      - ./reporter:/code
+      - /static:/static/
+    ports:
+      - '8000:8000'
+      - '8001:8000'
+    depends_on:
+      - postgres
