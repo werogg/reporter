@@ -32,8 +32,7 @@
 							</tr>
 						</thead>
 						<tbody>
-                                {% for report in data %}
-								<tr class='clickable-row' data-href='/reports/{{ report.id }}'>
+								<tr class='clickable-row' data-href='../../admin/add_report/report/{{ report.id }}/change/'>
 									<td class="column1">{{ report.timestamp }}</td>
 									<td class="column2">{{ report.id }}</td>
 									<td class="column3">{{ report.name }}</td>
@@ -41,7 +40,6 @@
 									<td class="column5" width="300px">{{ report.reason }}</td>
 									<td class="column6">{{ report.reported_by }}</td>
 								</tr>
-                                {% endfor %}
 						</tbody>
 					</table>
 				</div>

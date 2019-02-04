@@ -32,7 +32,7 @@
 							</tr>
 						</thead>
 						<tbody>
-                                {% for report in data %}
+								{% for report in reports_to_use %}
 								<tr class='clickable-row' data-href='/reports/{{ report.id }}'>
 									<td class="column1">{{ report.timestamp }}</td>
 									<td class="column2">{{ report.id }}</td>

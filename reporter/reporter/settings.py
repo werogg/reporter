@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -81,6 +80,7 @@ TEMPLATES = [
 
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
+LOGIN_URL = '/accounts/login'
 
 WSGI_APPLICATION = 'reporter.wsgi.application'
 
@@ -151,4 +151,3 @@ REST_FRAMEWORK = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
-django_heroku.settings(locals())

@@ -1,0 +1,6 @@
+{% extends "home/base.html" %}
+{% block content2 %}
+    {% if user.is_authenticated %}
+    {% include "home/search_report.html" %}
+    {% endif %}
+{% endblock %}
