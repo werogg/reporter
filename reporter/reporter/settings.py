@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [h for h in (os.getenv('ALLOWED_HOSTS') or '').split(',') if h]
 
-
 # Application definition
 
 DJANGO_APPS = [
@@ -40,6 +39,7 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
+    'apps.accounts',
     'apps.add_report',
     'apps.home',
 ]
@@ -65,7 +65,7 @@ ROOT_URLCONF = 'reporter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'apps/accounts/templates'), os.path.join(BASE_DIR, 'apps/accounts/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +77,10 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/home'
+LOGIN_URL = '/accounts/login'
 
 WSGI_APPLICATION = 'reporter.wsgi.application'
 

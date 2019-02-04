@@ -20,5 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('add_report/', include('apps.add_report.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('home/', include('apps.home.urls'))
+    path('home/', include('apps.home.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('reports/', include('apps.home.urls')),
+    path('', include('apps.home.urls')),
 ]

@@ -1,0 +1,60 @@
+{% load static %}
+<head>
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'reports/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<br><br><br>
+        <div class="limiter">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Fecha</th>
+								<th class="column2">ID</th>
+								<th class="column3">Nick</th>
+								<th class="column4">Sancion (Dd/Hh/Mm)</th>
+								<th class="column5">Motivo</th>
+								<th class="column6">Administrador</th>
+							</tr>
+						</thead>
+						<tbody>
+								{% for report in reports_to_use %}
+								<tr class='clickable-row' data-href='/reports/{{ report.id }}'>
+									<td class="column1">{{ report.timestamp }}</td>
+									<td class="column2">{{ report.id }}</td>
+									<td class="column3">{{ report.name }}</td>
+									<td class="column4">{{ report.punish }}</td>
+									<td class="column5" width="300px">{{ report.reason }}</td>
+									<td class="column6">{{ report.reported_by }}</td>
+								</tr>
+                                {% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+        </div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'reports/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'reports/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'reports/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'reports/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'reports/js/main.js' %}"></script>
+    <script src="{% static 'reports/js/clickablerow.js' %}"></script>
