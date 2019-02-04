@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+  Buenas {{ user.username }}, ya estás loggeado!
   <p><a href="{% url 'logout' %}">logout</a></p>
 {% endif %}
 {% endblock %}
