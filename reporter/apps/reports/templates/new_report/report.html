@@ -1,0 +1,7 @@
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if perms.add_report.add_report %}
+            {% include "new_report/report_form.html" %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

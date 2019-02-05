@@ -40,7 +40,7 @@ DJANGO_APPS = [
 
 PROJECT_APPS = [
     'apps.accounts',
-    'apps.add_report',
+    'apps.reports',
     'apps.home',
 ]
 
