@@ -4,46 +4,38 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework import mixins
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.generics import get_object_or_404
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 
 from .models import Report
 from .serializers import ReportSerializer
 
 
-class ReportsView:
-    @login_required
-    def by_id(self, req_id):
-        db_reports = Report.objects.get(id=req_id)
+class ReportsView(viewsets.GenericViewSet):
+    authentication_classes = [SessionAuthentication, ]
+    queryset = Report.objects.all()
+    renderer_classes = [TemplateHTMLRenderer, ]
 
-        return render(self, 'reports/selected_report.html', {'report': db_reports})
+    def get(self, request, user_id, *args, **kwargs):
+        report = get_object_or_404(self.queryset, id=user_id)
+        serializer = ReportSerializer(instance=report)
+        return Response(serializer.data, template_name='reports/selected_report.html')
 
-    @login_required
-    def reports(self):
-        db_reports = Report.objects.all()
+    def list(self, request, *args, **kwargs):
+        try:
+            searched_user = request.GET['fuser']
+            queryset = Report.objects.filter(name__icontains=searched_user)
+        except Exception as e:
+            queryset = self.queryset
+        finally:
+            serializer = ReportSerializer(queryset, many=True)
+            return Response({'data': serializer.data}, template_name='reports/reports_index.html')
 
-        args = {'data': db_reports}
 
-        base_template_name = "reports/reports_index.html"
-
-        user = self.GET.get('fuser', 'invalid')
-
-        reports_to_use = []
-
-        if user != 'invalid':
-            for reporte in db_reports:
-                if user in reporte.name:
-                    reports_to_use.append(reporte)
-            if len(reports_to_use) == 0:
-                return HttpResponseNotFound("No se ha encontrado ningún usuario")
-        else:
-            return render(self, base_template_name, args)
-
-        return render(self, 'reports/searched_reports.html',
-                      {'reports_to_use': reports_to_use})
-
-    @login_required
-    def new_report(self):
-        return render(self, 'new_report/report.html')
+@login_required
+def new_report(self):
+    return render(self, 'new_report/report.html')
 
 
 class ReportViewSet(mixins.ListModelMixin,

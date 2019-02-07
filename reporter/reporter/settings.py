@@ -39,7 +39,6 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'apps.accounts',
     'apps.reports',
     'apps.home',
 ]
@@ -78,9 +77,9 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/home'
-LOGOUT_REDIRECT_URL = '/home'
-LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = '/login/'
 
 WSGI_APPLICATION = 'reporter.wsgi.application'
 
