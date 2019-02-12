@@ -18,6 +18,10 @@
 	padding: 0px;
 	box-sizing: border-box;
 }
+body{
+  background: linear-gradient(to right, rgb(165, 198, 209), rgb(165, 198, 209));
+}
+
 
 body, html {
 	height: 100%;

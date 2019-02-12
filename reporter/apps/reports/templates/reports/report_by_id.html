@@ -1,4 +1,4 @@
-{% load static %}
+{% load staticfiles %}
 <head>
 
 <!--===============================================================================================-->
@@ -32,7 +32,7 @@
 							</tr>
 						</thead>
 						<tbody>
-								<tr class='clickable-row' data-href='../../admin/add_report/report/{{ report.id }}/change/'>
+								<tr class='clickable-row' data-href='../../admin/add_report/report/{{ report.id }}/'>
 									<td class="column1">{{ report.timestamp }}</td>
 									<td class="column2">{{ report.id }}</td>
 									<td class="column3">{{ report.name }}</td>
